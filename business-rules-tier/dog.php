@@ -62,7 +62,7 @@ class Dog {
   //breed validator method
 
   private function validator_breed($string) {
-    $breed_xml=simplexml_load_file("./xml-files/breeds.xml");
+    $breed_xml=simplexml_load_file("../xml-files/breeds.xml");
     $xmltext=$breed_xml->asXML();
 
     if(!stristr($xmltext, $string)) {

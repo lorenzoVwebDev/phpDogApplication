@@ -7,7 +7,7 @@ class GetBreeds {
       exit;
     }
   }
-
+//old get_select() function 
 /*   public function get_select($dog_app) {
     if (($dog_app != false)&&(file_exists($dog_app))) {
       $breed_file=simplexml_load_file($dog_app);
@@ -44,7 +44,7 @@ class GetBreeds {
 
 $get_breeds = new GetBreeds();
 
-print $get_breeds->get_select("./xml-files/breeds.xml");
+print $get_breeds->get_select("../xml-files/breeds.xml");
 
 
 ?>
