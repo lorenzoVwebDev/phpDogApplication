@@ -1,0 +1,30 @@
+{
+  "liveServer.settings.CustomBrowser": "chrome",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "workbench.preferredHighContrastLightColorTheme": "Abyss",
+  "workbench.preferredLightColorTheme": "Abyss",
+  "workbench.preferredHighContrastColorTheme": "Default Light+",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.preferredDarkColorTheme": "Quiet Light",
+  "files.associations": {
+      "*.html": "html"
+  },
+  "window.menuBarVisibility": "compact",
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "php.validate.executablePath": "C:\\wamp64\\bin\\php\\php8.3.6\\php.exe",
+  "intelephense.environment.phpVersion": "8.0",
+  "intelephense.environment.phpExecutable": "C:\\wamp64\\bin\\php\\php8.3.6\\php.exe",
+  "editor.quickSuggestions": {
+      "other": "off"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.defaultFormatter": "vscode.html-language-features",
+  "emmet.preferences": {
+      
+  }
+}
