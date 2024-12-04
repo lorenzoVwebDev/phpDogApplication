@@ -15,10 +15,10 @@ class Dog {
   );
   //Constructor
   function __construct($properties_array) {
-    $error_name = $this->set_dog_name($properties_array[0]) == TRUE ? 'TRUE,' : 'FALSE,';
-    $error_breed = $this->set_dog_breed($properties_array[1]) == TRUE ? 'TRUE,' : 'FALSE,';
-    $error_color = $this->set_dog_color($properties_array[2]) == TRUE ? 'TRUE,' : 'FALSE,';
-    $error_weight = $this->set_dog_weight($properties_array[3]) == TRUE ? 'TRUE,' : 'FALSE,';
+    $error_name = $this->set_dog_name($properties_array[0]) == true ? 'true,' : 'false,';
+    $error_breed = $this->set_dog_breed($properties_array[1]) == true ? 'true,' : 'false,';
+    $error_color = $this->set_dog_color($properties_array[2]) == true ? 'true,' : 'false,';
+    $error_weight = $this->set_dog_weight($properties_array[3]) == true ? 'true,' : 'false,';
 
     $this->error_message = $error_name.$error_breed.$error_color.$error_weight;
   }
@@ -28,20 +28,20 @@ class Dog {
   }
   //setMethods
   public function set_dog_name(string $value):bool {
-    $error_message = TRUE;
-    (ctype_alpha($value) && (strlen($value) <= 20)) ? $this->dog_name = $value : $error_message = FALSE;
+    $error_message = true;
+    (ctype_alpha($value) && (strlen($value) <= 20)) ? $this->dog_name = $value : $error_message = false;
     return $error_message;
   }
 
   public function set_dog_weight(int|float $value):bool {
-    $error_message = TRUE;
-    (is_numeric($value)&&($value>0&&$value<=120)) ? $this->dog_weight=$value:$error_message=FALSE;
+    $error_message = true;
+    (is_numeric($value)&&($value>0&&$value<=120)) ? $this->dog_weight=$value:$error_message=false;
     return $error_message;
   }
 
   public function set_dog_breed(string $value):bool {
-    $error_message=TRUE;
-    (ctype_alpha($value)&&$this->validator_breed($value)) ? $this->dog_breed=$value:$error_message=FALSE;
+    $error_message= true;
+    (ctype_alpha($value)&&$this->validator_breed($value)) ? $this->dog_breed=$value:$error_message=false;
     return $error_message;
   }
 
