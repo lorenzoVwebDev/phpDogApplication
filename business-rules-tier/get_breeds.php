@@ -1,7 +1,7 @@
 <?php
 class GetBreeds {
   //set $result public
-  public $result;
+  private $result;
   function __construct($properties_array) {
     if (!method_exists('dog_container', 'create_object')) {
       exit;
@@ -41,10 +41,5 @@ class GetBreeds {
     }
   }
 }
-
-$get_breeds = new GetBreeds();
-
-print $get_breeds->get_select("../xml-files/breeds.xml");
-
 
 ?>

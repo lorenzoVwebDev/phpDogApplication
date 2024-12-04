@@ -30,11 +30,21 @@ class Dog_container {
       }
     }
   }
+
+  function create_object($properties) {
+    $dog_loc=$this->get_dog_application();
+    if(($dog_loc==false)||(!file_exists($dog_loc))) {
+      print 'error <br>';
+      return false;
+    } else {
+      require_once($dog_loc);
+      $class_array=get_declared_classes();
+      $last_position=count($class_array)-1;
+      $class_name=$class_array[$last_position];
+      $object=new $class_name($properties);
+      return $object;
+    } 
+  }
 }
-
-$dog_cont = new Dog_container('breeds');
-
-print $dog_cont->get_dog_application();
-
 
 ?>

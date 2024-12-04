@@ -7,4 +7,9 @@ function error_check_dog_app($lab) {
   print $color_error == 'true' ? 'Color update successful<br/>' : 'Color update not successful<br/>';
   print $weight_error = 'true' ? 'Weight update successful<br/>' : 'Weight update not successful<br/>';
 }
+
+function get_properties($lab) {
+  print "Your dog's name is ".$lab->get_dog_name()."<br/>";
+  print 
+}
 ?>
