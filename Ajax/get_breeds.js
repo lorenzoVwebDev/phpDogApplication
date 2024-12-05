@@ -19,9 +19,21 @@ function getXMLHttp() {
 function AjaxRequest(value) {
   xmlHttp = getXMLHttp();
 
-  xmlHttp.onreadystatechange =function() {
-    if(xmlHttp.readyState == 4) {
-      HadnleResponse(xmlHttp.responseText)
+  console.log(value)
+
+  xmlHttp.onreadystatestage = function() {
+    if (xmlHttp.readyState == 4) {
+      handleResponse(xmlHttp.responsetext);
     }
   }
+
+  xmlHttp.open('GET', value, true);
+  xmlHttp.send(null); 
 }
+
+function handleResponse(response) {
+  console.log(response)
+  document.getElementeById('AjaxResponse').innerHTML = response;
+}
+
+console.log('hello');
