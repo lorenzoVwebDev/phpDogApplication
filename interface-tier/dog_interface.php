@@ -1,5 +1,18 @@
 <?php
 declare(strict_types=1);
+
+function checkUrlValidity($url) {
+  // Use get_headers to fetch HTTP response headers from the URL
+  $headers = @get_headers($url);
+
+  // Check if we received a valid response (status code 200 OK)
+  if ($headers && strpos($headers[0], "200") !== false) {
+      return true;  // URL is valid
+  } else {
+      return false;  // URL is not valid
+  }
+}
+
 function error_check_dog_app($lab) {
   list($name_error, $breed_error, $color_error, $weight_error) = explode(',', (string)$lab);
   print $name_error == 'true' ? 'Name update successful<br/>' : 'Name update not successful <br/>';
@@ -15,8 +28,10 @@ function get_properties($lab) {
   print "Your dog's color is ".$lab->get_dog_color()."<br>";
 }
 //Main section
-if (file_exists("../dog_container.php")) {
-  require_once("../dog_container.php");
+if (file_exists("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/dog_container.php")) {
+  require_once("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/dog_container.php");
+  $test = new Dog_container('hello');
+
 } else {
   print "error: dog_container not found";
 }
@@ -52,7 +67,8 @@ if((isset($_POST['dog_app']))) {
   $breeds=$container->create_object("selectbox");
 
   if ($breeds!=false) {
-    $properties="../xml-files/breeds.xml";
+    $properties="C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/xml-files/breeds.xml"
+;
     print $breeds->get_select($properties);
   } else {
     print "System Error #4";

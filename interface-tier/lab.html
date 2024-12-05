@@ -6,9 +6,7 @@
   <title>Canine Reservation Website</title>
 </head>
 <body>
-  <script src="../Ajax/get_breeds.js">
-    AjaxRequest('./dog_interface.php')
-    console.log('hello');
+  <script src="http://127.0.0.1/edsa-dog_applicationExcercise/Ajax/get_breeds.js">
   </script>
   <div>
     <h1>Dog Object Creator</h1>
@@ -23,8 +21,10 @@
         <input type="radio" name="dog_color" id="dog_color" value="white"/>white<br/>
         <input type="radio" name="dog_color" id="dog_color" value="mixed"/>mixed<br/><br/>
       Enter your dog's weight here (numeric only)
-      <input type="numeric" min="0" max="120" name="dog_weight" id="dog_weight" required/><br/>
-      <script></script>
+      <input type="number" min="0" max="120" name="dog_weight" id="dog_weight" required/><br/>
+      <script>
+        AjaxRequest('./dog_interface.php')
+      </script>
       <div id="AjaxResponse"></div>
       <input type="hidden" name="dog_app" id="dog_app" value="dog"/>
       <input type="submit" value="click to create your dog"/>

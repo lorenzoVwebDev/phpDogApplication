@@ -1,5 +1,6 @@
 function getXMLHttp() {
-  var xmlHttp;
+  var xmlHttp
+
   try {
     xmlHttp=new XMLHttpRequest();
   } catch(e) {
@@ -14,16 +15,16 @@ function getXMLHttp() {
       }
     }
   }
+
+  return xmlHttp;
 }
 
 function AjaxRequest(value) {
   xmlHttp = getXMLHttp();
 
-  console.log(value)
-
-  xmlHttp.onreadystatestage = function() {
+  xmlHttp.onreadystatechange = () => {
     if (xmlHttp.readyState == 4) {
-      handleResponse(xmlHttp.responsetext);
+      handleResponse(xmlHttp.responseText);
     }
   }
 
@@ -32,8 +33,6 @@ function AjaxRequest(value) {
 }
 
 function handleResponse(response) {
-  console.log(response)
-  document.getElementeById('AjaxResponse').innerHTML = response;
+  document.getElementById('AjaxResponse').innerHTML = response;
 }
 
-console.log('hello');

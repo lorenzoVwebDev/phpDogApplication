@@ -1,6 +1,6 @@
 <?php
 class Dog_container {
-  private string $app;
+  public string $app;
   private $dog_location;
 
   function __construct($value) {
@@ -17,8 +17,10 @@ class Dog_container {
 
   public function get_dog_application() {
     $xmlDoc=new DOMDocument();
-    if (file_exists("./xml-files/dog_applications.xml")) {
-      $xmlDoc->load("./xml-files/dog_applications.xml");
+    if (file_exists("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/xml-files/dog_applications.xml")) {
+
+      $xmlDoc->load("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/xml-files/dog_applications.xml"
+);
       $typeNodes=$xmlDoc->getElementsByTagName("type");
       foreach($typeNodes as $searchNodes) {
         $id=$searchNodes->getAttribute('ID');
@@ -34,10 +36,11 @@ class Dog_container {
   function create_object($properties) {
     $dog_loc=$this->get_dog_application();
     if(($dog_loc==false)||(!file_exists($dog_loc))) {
-      print 'error <br>';
       return false;
     } else {
-      require_once($dog_loc);
+      if (require_once($dog_loc)) {
+        print 'true';
+      };
       $class_array=get_declared_classes();
       $last_position=count($class_array)-1;
       $class_name=$class_array[$last_position];
@@ -46,5 +49,4 @@ class Dog_container {
     } 
   }
 }
-
 ?>
