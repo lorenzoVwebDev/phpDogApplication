@@ -1,6 +1,6 @@
 <?php
 class Dog_container {
-  public string $app;
+  private string $app;
   private $dog_location;
 
   function __construct($value) {
@@ -17,10 +17,8 @@ class Dog_container {
 
   public function get_dog_application() {
     $xmlDoc=new DOMDocument();
-    if (file_exists("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/xml-files/dog_applications.xml")) {
-
-      $xmlDoc->load("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/xml-files/dog_applications.xml"
-);
+    if (file_exists(__DIR__."/xml-files/dog_applications.xml")) {
+      $xmlDoc->load(__DIR__."/xml-files/dog_applications.xml");
       $typeNodes=$xmlDoc->getElementsByTagName("type");
       foreach($typeNodes as $searchNodes) {
         $id=$searchNodes->getAttribute('ID');
@@ -30,22 +28,27 @@ class Dog_container {
           return $file;
         }
       }
+    } else {
+      //throw exception
     }
   }
 
   function create_object($properties) {
     $dog_loc=$this->get_dog_application();
-    if(($dog_loc==false)||(!file_exists($dog_loc))) {
+    if(($dog_loc==false)||(!file_exists(__DIR__.$dog_loc))) {
+      //throw exception
       return false;
     } else {
-      if (require_once($dog_loc)) {
-        print 'true';
-      };
-      $class_array=get_declared_classes();
-      $last_position=count($class_array)-1;
-      $class_name=$class_array[$last_position];
-      $object=new $class_name($properties);
-      return $object;
+      if (require_once(__DIR__.$dog_loc)) {
+        $class_array=get_declared_classes();
+        $last_position=count($class_array)-1;
+        $class_name=$class_array[$last_position];
+        $object=new $class_name($properties);
+        return $object;
+      } else {
+        //throw exception
+      }
+
     } 
   }
 }

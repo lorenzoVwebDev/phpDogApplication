@@ -28,12 +28,10 @@ function get_properties($lab) {
   print "Your dog's color is ".$lab->get_dog_color()."<br>";
 }
 //Main section
-if (file_exists("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/dog_container.php")) {
-  require_once("C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/dog_container.php");
-  $test = new Dog_container('hello');
-
+if (file_exists("../dog_container.php")) {
+  require_once("../dog_container.php");
 } else {
-  print "error: dog_container not found";
+  //send exception
 }
 
 if((isset($_POST['dog_app']))) {
@@ -67,8 +65,7 @@ if((isset($_POST['dog_app']))) {
   $breeds=$container->create_object("selectbox");
 
   if ($breeds!=false) {
-    $properties="C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/xml-files/breeds.xml"
-;
+    $properties="../xml-files/breeds.xml";
     print $breeds->get_select($properties);
   } else {
     print "System Error #4";

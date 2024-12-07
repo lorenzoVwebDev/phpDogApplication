@@ -7,8 +7,7 @@
     </application>
     <application>
         <type ID='selectbox'>
-            <location>C:/Users/loren/Desktop/functionals/Information Technology Courses/WebDevelopment/phpExcercises/dogApplication/business-rules-tier/get_breeds.php
-</location>
+            <location>/business-rules-tier/get_breeds.php</location>
         </type>
     </application>
     <application>
