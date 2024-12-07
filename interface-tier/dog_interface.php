@@ -14,7 +14,7 @@ function checkUrlValidity($url) {
 }
 
 function error_check_dog_app($lab) {
-  list($name_error, $breed_error, $color_error, $weight_error) = explode(',', (string)$lab);
+  list($name_error, $breed_error, $color_error, $weight_error) = explode(',', $lab->to_string());
   print $name_error == 'true' ? 'Name update successful<br/>' : 'Name update not successful <br/>';
   print $breed_error == 'true' ? ' Breed update successful<br/>' : 'Breed update not successful<br/>';
   print $color_error == 'true' ? 'Color update successful<br/>' : 'Color update not successful<br/>';
@@ -37,23 +37,29 @@ if (file_exists("../dog_container.php")) {
 if((isset($_POST['dog_app']))) {
   if (isset($_POST['dog_name'])&&isset($_POST['dog_weight'])&&isset($_POST['dog_breed'])&&isset($_POST['dog_color'])) {
     $container=new Dog_container(filter_var($_POST['dog_app'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-    $dog_name=filter_var($_POST['dog_name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $dog_color=filter_var($_POST['dog_color'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $dog_weight=filter_var($_POST['dog_weight'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $dog_breed=filter_var($_POST['dog_breed'],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    $properties=array(
-      $dog_name,
-      $dog_color,
-      $dog_weight,
-      $dog_breed
-    );
-    $lab=$container->create_object($properties);
+    if (isset($container)) {
+      $dog_name=filter_var($_POST['dog_name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $dog_color=filter_var($_POST['dog_color'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $dog_weight=filter_var($_POST['dog_weight'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $dog_breed=filter_var($_POST['dog_breed'],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  
+      $properties=array(
+        $dog_name,
+        $dog_breed,
+        $dog_color,
+        $dog_weight
+      );
+  
+      $lab = $container->create_object($properties);
+    } else {
+      //send exception
+    }
 
     if ($lab != false) {
       error_check_dog_app($lab);
       get_properties($lab);
     } else {
+      //send exception
       print "error: dog not created";
     }
   } else {

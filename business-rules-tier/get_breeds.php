@@ -33,7 +33,7 @@ class GetBreeds {
       $selectBox="<select name='dog_breed' id='dog_breed'>";
       $selectBox.="<option value='-1' selected>Select a dog breed</option>";
       foreach($breeds_array['breed']as$index=>$value) {
-        $selectBox.="<option value='$index'>$value</option>";
+        $selectBox.="<option value='$value'>$value</option>";
       }
       $selectBox.="</select>";
       $this->result=$selectBox;

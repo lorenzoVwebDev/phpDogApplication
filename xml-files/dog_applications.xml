@@ -2,7 +2,7 @@
 <dog_applications>
     <application>
         <type ID='dog'>
-            <location>dog.php</location>
+            <location>/business-rules-tier/dog.php</location>
         </type>
     </application>
     <application>
