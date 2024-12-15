@@ -6,7 +6,7 @@ Description:
 
 •	A simple dog creation engine that involves: 
 
-•	MVP approach among modules
+•	MVC approach among modules
 
 •	Ajax request in the interface-tier/lab.html
 
